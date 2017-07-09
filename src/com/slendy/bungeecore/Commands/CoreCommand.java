@@ -23,8 +23,8 @@ import net.md_5.bungee.api.plugin.Command;
  * ************************************************************************
  */
 
-public class CommandCore extends Command {
-    public CommandCore() {
+public class CoreCommand extends Command {
+    public CoreCommand() {
         super("core");
     }
 

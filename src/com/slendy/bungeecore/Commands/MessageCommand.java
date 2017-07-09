@@ -1,6 +1,6 @@
 package com.slendy.bungeecore.Commands;
 
-import com.slendy.bungeecore.core;
+import com.slendy.bungeecore.Core;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -17,9 +17,9 @@ import net.md_5.bungee.command.PlayerCommand;
  * Thanks
  * ************************************************************************
  */
-public class CommandMessage extends PlayerCommand {
+public class MessageCommand extends PlayerCommand {
 
-    public CommandMessage() { super("msg", "", "m", "message", "w", "whisper", "tell", "t"); }
+    public MessageCommand() { super("msg", "", "m", "message", "w", "whisper", "tell", "t"); }
 
     @Override
     public void execute(CommandSender sender, String[] args) {
@@ -45,14 +45,14 @@ public class CommandMessage extends PlayerCommand {
             }
             target.sendMessage("§2§l" + sender.getName() + " > " + target.getName() + "§a§l " + msg1);
             sender.sendMessage("§2§l" + sender.getName() + " > " + target.getName() + "§a§l " + msg1);
-            if(core.lastmessage.containsKey(sender.getName())){
-                core.lastmessage.remove(sender.getName());
+            if(Core.lastmessage.containsKey(sender.getName())){
+                Core.lastmessage.remove(sender.getName());
             }
-            core.lastmessage.put(sender.getName(), target.getName());
-            if(core.lastmessage.containsKey(target.getName())){
-                core.lastmessage.remove(target.getName());
+            Core.lastmessage.put(sender.getName(), target.getName());
+            if(Core.lastmessage.containsKey(target.getName())){
+                Core.lastmessage.remove(target.getName());
             }
-            core.lastmessage.put(target.getName(), sender.getName());
+            Core.lastmessage.put(target.getName(), sender.getName());
         }
 
     }

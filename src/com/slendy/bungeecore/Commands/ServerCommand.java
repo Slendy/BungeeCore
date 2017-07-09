@@ -21,9 +21,9 @@ import java.util.Collection;
  * Thanks
  * ************************************************************************
  */
-public class Server extends Command {
+public class ServerCommand extends Command {
 
-    public Server() {
+    public ServerCommand() {
         super("server");
     }
 

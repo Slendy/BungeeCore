@@ -16,9 +16,9 @@ import net.md_5.bungee.command.PlayerCommand;
  * Thanks
  * ************************************************************************
  */
-public class CommandSend extends PlayerCommand {
+public class SendCommand extends PlayerCommand {
 
-    public CommandSend() {
+    public SendCommand() {
         super("send");
     }
 

@@ -1,6 +1,6 @@
 package com.slendy.bungeecore.Commands;
 
-import com.slendy.bungeecore.core;
+import com.slendy.bungeecore.Core;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -26,11 +26,11 @@ import java.util.Arrays;
  * Thanks
  * ************************************************************************
  */
-public class setrank extends PlayerCommand {
+public class SetRankCommand extends PlayerCommand {
 
-    private core plugin = core.getPlugin();
+    private Core plugin = Core.getPlugin();
 
-    public setrank(){
+    public SetRankCommand(){
         super("setrank");
     }
 
@@ -47,15 +47,15 @@ public class setrank extends PlayerCommand {
                     return;
                 }
                 p.removeGroups((String[])p.getGroups().toArray(new String[p.getGroups().size()]));
-                p.addGroups(new String[] {rank});
+                p.addGroups(rank);
                 File file = new File(plugin.getDataFolder().getParentFile().getParent(), "config.yml");
                 try{
                     Configuration config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
                     for(String remove : p.getGroups()){
                         config.getStringList("groups." + p.getName()).remove(remove);
                     }
-                    p.disconnect("§3Rank §7>> Your BungeeCord rank has been set to §a" + core.capitalizeFirstLetter(rank.toLowerCase()) + " §7by §a" + sender.getName() + "§7. \n §7Please relogin.");
-                    sender.sendMessage("§3Rank §7>> You set §a" + p.getName() + "'s §7rank to §a" + core.capitalizeFirstLetter(rank.toLowerCase()) + "§7.");
+                    p.disconnect("§3Rank §7>> Your BungeeCord rank has been set to §a" + Core.capitalizeFirstLetter(rank.toLowerCase()) + " §7by §a" + sender.getName() + "§7. \n §7Please relogin.");
+                    sender.sendMessage("§3Rank §7>> You set §a" + p.getName() + "'s §7rank to §a" + Core.capitalizeFirstLetter(rank.toLowerCase()) + "§7.");
                     config.getStringList("groups." + p.getName()).add(rank);
                     config.set("groups." + p.getName(), Arrays.asList(new String[] {rank}));
                     ConfigurationProvider.getProvider(YamlConfiguration.class).save(config, file);

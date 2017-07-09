@@ -24,35 +24,7 @@ import net.md_5.bungee.config.YamlConfiguration;
 
 
 
-public class Helper
-{
-    private static core plugin;
-    private static boolean maintenance = false;
-
-    public static core getPlugin()
-    {
-        return plugin;
-    }
-
-    public static void setPlugin(core plugin)
-    {
-        plugin = plugin;
-    }
-
-    public static boolean getMaintenance()
-    {
-        return maintenance;
-    }
-
-    public static void setMaintenance(boolean maintenance)
-    {
-        maintenance = maintenance;
-    }
-
-//    public static String getPrefix(String label)
-//    {
-//        return ChatColor.DARK_AQUA + label + " §7>> " + ChatColor.GRAY;
-//    }
+public class Helper {
 
     public static boolean addServer(String name, String host, int port)
     {
@@ -86,7 +58,7 @@ public class Helper
         }
 
         for (ProxiedPlayer plyr : ((ServerInfo) ProxyServer.getInstance().getServers().get(name)).getPlayers()) {
-            plyr.disconnect(new ComponentBuilder(("§3Core>")).append(" Server was cleared, please rejoin.").color(ChatColor.GRAY).create());
+            plyr.disconnect(new ComponentBuilder(("§3Core §7>>")).append(" Server was cleared, please rejoin.").color(ChatColor.GRAY).create());
         }
 
         ProxyServer.getInstance().getServers().remove(name);

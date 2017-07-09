@@ -15,9 +15,9 @@ import net.md_5.bungee.command.PlayerCommand;
  * Thanks
  * ************************************************************************
  */
-public class CommandFind extends PlayerCommand {
+public class FindCommand extends PlayerCommand {
 
-    public CommandFind() { super("find"); }
+    public FindCommand() { super("find"); }
 
     @Override
     public void execute(CommandSender sender, String[] args) {

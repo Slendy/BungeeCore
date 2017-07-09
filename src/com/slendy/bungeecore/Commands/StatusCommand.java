@@ -21,10 +21,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Thanks
  * ************************************************************************
  */
-public class status extends Command {
+public class StatusCommand extends Command {
 
 
-    public status() {
+    public StatusCommand() {
         super("status");
     }
 

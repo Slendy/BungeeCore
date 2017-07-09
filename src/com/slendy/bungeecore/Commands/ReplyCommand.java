@@ -1,6 +1,6 @@
 package com.slendy.bungeecore.Commands;
 
-import com.slendy.bungeecore.core;
+import com.slendy.bungeecore.Core;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -17,9 +17,9 @@ import net.md_5.bungee.api.plugin.Command;
  * Thanks
  * ************************************************************************
  */
-public class CommandReply extends Command{
+public class ReplyCommand extends Command{
 
-    public CommandReply(){
+    public ReplyCommand(){
         super("reply", "", "r" );
     }
 
@@ -30,13 +30,13 @@ public class CommandReply extends Command{
                 sender.sendMessage("§3Message §7>> /r <message> - Sends a message to the last person who messaged you");
                 return;
             }
-            if(!core.lastmessage.containsKey(sender.getName())){
+            if(!Core.lastmessage.containsKey(sender.getName())){
                 sender.sendMessage("§3Message §7>> No one has messaged you recently.");
                 return;
             }
-            ProxiedPlayer target = ProxyServer.getInstance().getPlayer(core.lastmessage.get(sender.getName()));
+            ProxiedPlayer target = ProxyServer.getInstance().getPlayer(Core.lastmessage.get(sender.getName()));
             if(target == null){
-                sender.sendMessage("§3Message> §a" + core.lastmessage.get(sender.getName()) + " §7is not online.");
+                sender.sendMessage("§3Message> §a" + Core.lastmessage.get(sender.getName()) + " §7is not online.");
                 return;
             }
             String message = "";
@@ -50,14 +50,14 @@ public class CommandReply extends Command{
             }
             target.sendMessage("§2§l" + sender.getName() + " > " + target.getName() + "§a§l " + message);
             sender.sendMessage("§2§l" + sender.getName() + " > " + target.getName() + "§a§l " + message);
-            if(core.lastmessage.containsKey(sender.getName())){
-                core.lastmessage.remove(sender.getName());
+            if(Core.lastmessage.containsKey(sender.getName())){
+                Core.lastmessage.remove(sender.getName());
             }
-            core.lastmessage.put(sender.getName(), target.getName());
-            if(core.lastmessage.containsKey(target.getName())){
-                core.lastmessage.remove(target.getName());
+            Core.lastmessage.put(sender.getName(), target.getName());
+            if(Core.lastmessage.containsKey(target.getName())){
+                Core.lastmessage.remove(target.getName());
             }
-            core.lastmessage.put(target.getName(), sender.getName());
+            Core.lastmessage.put(target.getName(), sender.getName());
         }
 
 

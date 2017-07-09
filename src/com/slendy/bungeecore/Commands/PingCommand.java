@@ -14,9 +14,9 @@ import net.md_5.bungee.api.plugin.Command;
  * Thanks
  * ************************************************************************
  */
-public class ping extends Command {
+public class PingCommand extends Command {
 
-    public ping(){
+    public PingCommand(){
         super("ping");
     }
 

@@ -18,9 +18,9 @@ import net.md_5.bungee.api.plugin.Command;
  * Thanks
  * ************************************************************************
  */
-public class CommandAlert extends Command {
+public class AlertCommand extends Command {
 
-    public CommandAlert(){
+    public AlertCommand(){
         super("alert");
     }
 

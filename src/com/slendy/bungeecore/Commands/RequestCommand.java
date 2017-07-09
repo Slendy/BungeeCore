@@ -19,10 +19,10 @@ import java.util.HashMap;
  * Thanks
  * ************************************************************************
  */
-public class request extends Command {
+public class RequestCommand extends Command {
 
 
-    public request() {
+    public RequestCommand() {
         super("request");
     }
 

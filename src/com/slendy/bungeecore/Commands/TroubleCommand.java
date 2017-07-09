@@ -15,9 +15,9 @@ import net.md_5.bungee.command.PlayerCommand;
  * Thanks
  * ************************************************************************
  */
-public class CommandTrouble extends PlayerCommand {
+public class TroubleCommand extends PlayerCommand {
 
-    public CommandTrouble(){ super("trouble"); }
+    public TroubleCommand(){ super("trouble"); }
 
     public void usage(ProxiedPlayer player){ player.sendMessage("§3Report §7>> /trouble <player> <reason> - Sends the player a message about their report (without name)."); }
 

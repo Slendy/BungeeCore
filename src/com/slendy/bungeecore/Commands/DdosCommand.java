@@ -15,10 +15,10 @@ import net.md_5.bungee.command.PlayerCommand;
  * Thanks
  * ************************************************************************
  */
-public class CommandDdos extends PlayerCommand {
+public class DdosCommand extends PlayerCommand {
     //fun inside joke :^)
 
-    public CommandDdos(){
+    public DdosCommand(){
         super("ddos");
     }
 

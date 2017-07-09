@@ -1,23 +1,15 @@
 package com.slendy.bungeecore;
 
 import com.slendy.bungeecore.Commands.*;
-import com.slendy.bungeecore.Commands.Server;
-import net.md_5.bungee.api.ChatColor;
+import com.slendy.bungeecore.Commands.ServerCommand;
 import net.md_5.bungee.api.ServerPing;
-import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.PlayerDisconnectEvent;
 import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
-import net.md_5.bungee.config.ConfigurationProvider;
-import net.md_5.bungee.config.YamlConfiguration;
 import net.md_5.bungee.event.EventHandler;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
 import java.util.HashMap;
 
 
@@ -31,9 +23,9 @@ import java.util.HashMap;
  * Thanks
  * ************************************************************************
  */
-public class core extends Plugin implements Listener {
+public class Core extends Plugin implements Listener {
 
-    private static core plugin;
+    private static Core plugin;
 
     public static String capitalizeFirstLetter(String original)
     {
@@ -62,49 +54,36 @@ public class core extends Plugin implements Listener {
         e.setResponse(ping);
     }
 
-
-
-
-    private static core instance;
-
-    public Configuration config;
-
     @Override
     public void onEnable() {
         plugin = this;
 
-        getProxy().getPluginManager().registerCommand(this, new CommandAlert());
-        getProxy().getPluginManager().registerCommand(this, new CommandFind());
-        getProxy().getPluginManager().registerCommand(this, new CommandSend());
-        getProxy().getPluginManager().registerCommand(this, new status());
+        getProxy().getPluginManager().registerCommand(this, new AlertCommand());
+        getProxy().getPluginManager().registerCommand(this, new FindCommand());
+        getProxy().getPluginManager().registerCommand(this, new SendCommand());
+        getProxy().getPluginManager().registerCommand(this, new StatusCommand());
         getProxy().getPluginManager().registerCommand(this, new SCommand());
         getProxy().getPluginManager().registerCommand(this, new StaffCommand());
-        getProxy().getPluginManager().registerCommand(this, new setrank());
-        getProxy().getPluginManager().registerCommand(this, new Server());
-        getProxy().getPluginManager().registerCommand(this, new CommandCore());
-        getProxy().getPluginManager().registerCommand(this, new CommandReport());
-        getProxy().getPluginManager().registerCommand(this, new CommandTrouble());
-        getProxy().getPluginManager().registerCommand(this, new CommandMessage());
-        getProxy().getPluginManager().registerCommand(this, new CommandReply());
-        getProxy().getPluginManager().registerCommand(this, new CommandDdos());
-        getProxy().getPluginManager().registerCommand(this, new ping());
-//        getProxy().getPluginManager().registerCommand(this, new exec());
-        getProxy().getPluginManager().registerCommand(this, new request());
+        getProxy().getPluginManager().registerCommand(this, new SetRankCommand());
+        getProxy().getPluginManager().registerCommand(this, new ServerCommand());
+        getProxy().getPluginManager().registerCommand(this, new CoreCommand());
+        getProxy().getPluginManager().registerCommand(this, new ReportCommand());
+        getProxy().getPluginManager().registerCommand(this, new TroubleCommand());
+        getProxy().getPluginManager().registerCommand(this, new MessageCommand());
+        getProxy().getPluginManager().registerCommand(this, new ReplyCommand());
+        getProxy().getPluginManager().registerCommand(this, new DdosCommand());
+        getProxy().getPluginManager().registerCommand(this, new PingCommand());
+        getProxy().getPluginManager().registerCommand(this, new RequestCommand());
 
         getProxy().getPluginManager().registerListener(this, this);
-        Helper.setPlugin(this);
-//        getLogger().info("Enabled");
-        instance = this;
         }
 
     @Override
     public void onDisable(){
-
-//        getLogger().info("Disabled");
         plugin = null;
     }
 
-    public static core getPlugin(){
+    public static Core getPlugin(){
         return plugin;
     }
 
